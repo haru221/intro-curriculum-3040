@@ -10,6 +10,8 @@ const basic = auth.basic(
 const server = http.createServer(basic.check((req, res) => {
   console.info('Requested by ' + req.socket.remoteAddress);
 
+  console.log(req.user);
+
   if (req.url === '/logout') {
     res.writeHead(401, {
       'Content-Type': 'text/plain; charset=utf-8'
